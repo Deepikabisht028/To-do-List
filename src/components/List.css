@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.task-list {
+    padding: 15px;
+    background-color: #C03221;
+    height: 75vh;
+    width: 69vw;
+    color: #F7F7FF;
+    font-size: 1.5em;
+    border-radius: 15px;
+}
+
+a{
+    margin-left: 1em;
+    margin-right: 0.5em;
+}
+
+nav{
+margin-bottom: 10px;
+}
+
+a{
+ font-size: 1em;
+ padding: 5px 0.3em;
+ width: 18px;
+ color:#F7F7FF ;
+ text-decoration: none;
+}
+
+a.active {
+  border-radius: 0.7em;
+  background-color: #F7F7FF ;
+  font-weight: bold;
+  color:#C03221;
+}
+
+#tasklist{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    padding: 10px 0px;
+}
+
+#tasklist button {
+    height: 25px;
+    width: auto;
+    padding: 3px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+p {
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+.cut{
+     background-color: #e16e61;
+     border-radius: 15px;
+}
+
+.cut p{
+    text-decoration: line-through;
+}
+
+.normal{
+   background-color: #C03221;
+}
+
+.normal p {
+    text-decoration: none;
+}
+
+#check {
+    margin-left: 16px;
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.newTask{
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+.newTask input{
+  width: 55vw;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.newTask button{
+    margin-left: auto;
+    width: 80px;
+    height: 35px;
+}
