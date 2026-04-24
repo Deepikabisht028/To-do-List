@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../context/Context";
 
-function Task({ task, onDelete, isDone }) {
-    
+function Task({ task, onDelete }) {
+    const { setTask } = useContext(TodoContext);
+
     const handleCheck = () => {
-        isDone({name:task.name,id:task.id,checked: !task.checked});
+        setTask((prevs) => (prevs.map((todo) =>
+            todo.id === task.id ? { ...todo, checked: !todo.checked } : todo)));
     };
 
     const handleDelete = () => {

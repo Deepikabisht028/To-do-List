@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import Task from './Task';
+import { TodoContext } from '../context/Context';
 
-function AllTasks({ tasks, done, setTask, setDone }) {
-
+function AllTasks() {
+    const { tasks, setTask}= useContext(TodoContext);
     const textRef = useRef();
 
     const handleArray = (e) => {
@@ -14,28 +15,14 @@ function AllTasks({ tasks, done, setTask, setDone }) {
         if (sameValue) textRef.current.value = "";
 
         //adding a unique id for key usage
-        else if (value && !sameValue) {
+        else if (value) {
             setTask((prevtasks) => [...prevtasks, { id: crypto.randomUUID(), name: value, checked: false }]);
             textRef.current.value = "";
         }
     }
 
     const onDelete = (value) => {
-        value.checked ?
-            setDone(done.filter((task) => task.name !== value)) :
             setTask(tasks.filter((task) => task.name !== value));
-    }
-
-    //Logic for switching into inprogress and completed task list
-    const isDone = (value) => {
-        if (!value.checked) {
-            setTask((prevtasks) => [...prevtasks, value]);
-            setDone(done.filter((task) => task.name !== value.name))
-        }
-        else {
-            setDone((prevtasks) => [...prevtasks, value]);
-            setTask(tasks.filter((task) => task.name !== value.name))
-        }
     }
 
     return (
@@ -45,10 +32,7 @@ function AllTasks({ tasks, done, setTask, setDone }) {
                 <button type="submit" >Add</button>
             </form>
             {tasks.map((task) => (
-                <Task key={task.id} task={task} onDelete={onDelete} isDone={isDone} />
-            ))}
-            {done.map((task) => (
-                <Task key={task.id} task={task} onDelete={onDelete} isDone={isDone} />
+                <Task key={task.id} task={task} onDelete={onDelete} />
             ))}
         </>
     );
