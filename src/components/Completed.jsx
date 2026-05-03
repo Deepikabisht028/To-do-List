@@ -4,17 +4,13 @@ import { TodoContext } from '../context/Context';
 
 function Completed() {
 
-    const { tasks, setTask } = useContext(TodoContext);
-
-    const onDelete = (value) => {
-        setTask(tasks.filter((task) => task.name !== value))
-    }
+    const { tasks} = useContext(TodoContext);
 
     const completed = tasks.filter((task) => task.checked);
     return (
         <div>
             {completed.length > 0 ? completed.map((task) =>
-                (<Task key={task.id} task={task} onDelete={onDelete} />)
+                (<Task key={task.id} task={task}/>)
             )
             : (<p>Currently no completed task</p>)}
         </div>

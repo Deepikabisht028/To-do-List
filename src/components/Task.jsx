@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { TodoContext } from "../context/Context";
 
-function Task({ task, onDelete }) {
-    const { setTask } = useContext(TodoContext);
+function Task({ task}) {
+    const { tasks,setTask } = useContext(TodoContext);
 
     const handleCheck = () => {
         setTask((prevs) => (prevs.map((todo) =>
@@ -10,7 +10,7 @@ function Task({ task, onDelete }) {
     };
 
     const handleDelete = () => {
-        onDelete(task.name);
+        setTask(tasks.filter((todo) => task.id !== todo.id))
     }
 
     return (<li id="tasklist" className={task.checked ? 'cut' : 'normal'}>

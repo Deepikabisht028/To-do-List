@@ -21,9 +21,6 @@ function AllTasks() {
         }
     }
 
-    const onDelete = (value) => {
-            setTask(tasks.filter((task) => task.name !== value));
-    }
 
     return (
         <>
@@ -32,7 +29,7 @@ function AllTasks() {
                 <button type="submit" >Add</button>
             </form>
             {tasks.map((task) => (
-                <Task key={task.id} task={task} onDelete={onDelete} />
+                <Task key={task.id} task={task} />
             ))}
         </>
     );
